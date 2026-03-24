@@ -3,22 +3,21 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
-
   <title>Crossy Road</title>
 
-  <!-- Estilos -->
+  <!-- CSS -->
   <link rel="stylesheet" href="sprites/style.css" />
   <link rel="stylesheet" href="sprites/app-store-interstitial.css" />
 
-  <!-- SDK externo de Poki -->
+  <!-- SDK externo -->
   <script src="//game-cdn.poki.com/scripts/v2/poki-sdk.js"></script>
 </head>
 <body>
-  <!-- Contenedor donde se renderiza el juego -->
+  <!-- Contenedor del juego -->
   <div id="container"></div>
 
-  <!-- Botones para cambiar modos, visibles desde el inicio -->
-  <div class="worldSwitcher" style="transform: translateX(0);">
+  <!-- Botones de modos desplegables -->
+  <div class="worldSwitcher">
     <button class="worldSwitcher__button" data-world="original">
       <img alt="Original" src="https://a.poki-cdn.com/cdn-cgi/image/f=auto,width=176,height=88,quality=78/cr-mv/original-s-v2.png" />
     </button>
@@ -30,7 +29,7 @@
     </button>
   </div>
 
-  <!-- Scripts JS, en orden para que el juego funcione -->
+  <!-- Scripts JS en orden correcto -->
   <script src="scripts/asset-loader.min.js"></script>
   <script src="scripts/three.min.js"></script>
   <script src="scripts/game.min.js"></script>
