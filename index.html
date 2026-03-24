@@ -6,14 +6,18 @@
 
   <title>Crossy Road</title>
 
-  <!-- Estilos principales -->
+  <!-- Estilos -->
   <link rel="stylesheet" href="sprites/style.css" />
   <link rel="stylesheet" href="sprites/app-store-interstitial.css" />
 
-  <!-- SDK externo, puedes dejarlo así -->
+  <!-- SDK externo -->
   <script src="//game-cdn.poki.com/scripts/v2/poki-sdk.js"></script>
 </head>
 <body>
+  <!-- Contenedor donde se renderiza el juego -->
+  <div id="container"></div>
+
+  <!-- Botones para cambiar modos -->
   <div class="worldSwitcher">
     <button class="worldSwitcher__button" data-world="original" type="button">
       <img alt="Original" src="https://a.poki-cdn.com/cdn-cgi/image/f=auto,width=176,height=88,quality=78/cr-mv/original-s-v2.png" 
@@ -33,10 +37,14 @@
   </div>
 
   <!-- Scripts JS -->
+  <script src="scripts/asset-loader.min.js"></script>
+  <script src="scripts/three.min.js"></script>
+  <script src="scripts/game.min.js"></script>
   <script src="scripts/extra.min.js"></script>
   <script src="scripts/bootstrap.min.js"></script>
 
   <script>
+    // Inicializa los botones de cambio de mundo
     window.onload = function () {
       function switchWorld(type, content){
         window.postMessage({ type, content: { worldName:content }}, '*');
