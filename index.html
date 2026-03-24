@@ -10,33 +10,27 @@
   <link rel="stylesheet" href="sprites/style.css" />
   <link rel="stylesheet" href="sprites/app-store-interstitial.css" />
 
-  <!-- SDK externo -->
+  <!-- SDK externo de Poki -->
   <script src="//game-cdn.poki.com/scripts/v2/poki-sdk.js"></script>
 </head>
 <body>
   <!-- Contenedor donde se renderiza el juego -->
   <div id="container"></div>
 
-  <!-- Botones para cambiar modos -->
-  <div class="worldSwitcher">
-    <button class="worldSwitcher__button" data-world="original" type="button">
-      <img alt="Original" src="https://a.poki-cdn.com/cdn-cgi/image/f=auto,width=176,height=88,quality=78/cr-mv/original-s-v2.png" 
-           srcset="https://a.poki-cdn.com/cdn-cgi/image/f=auto,width=176,height=88,quality=78/cr-mv/original-s-v2.png 1x, https://a.poki-cdn.com/cdn-cgi/image/f=auto,width=352,height=176,quality=78/cr-mv/original-s-v2.png 2x" 
-           height="88" width="176" decoding="async" />
+  <!-- Botones para cambiar modos, visibles desde el inicio -->
+  <div class="worldSwitcher" style="transform: translateX(0);">
+    <button class="worldSwitcher__button" data-world="original">
+      <img alt="Original" src="https://a.poki-cdn.com/cdn-cgi/image/f=auto,width=176,height=88,quality=78/cr-mv/original-s-v2.png" />
     </button>
-    <button class="worldSwitcher__button" data-world="space" type="button">
-      <img alt="Space" src="https://a.poki-cdn.com/cdn-cgi/image/f=auto,width=176,height=88,quality=78/cr-mv/space-s-v2.png" 
-           srcset="https://a.poki-cdn.com/cdn-cgi/image/f=auto,width=176,height=88,quality=78/cr-mv/space-s-v2.png 1x, https://a.poki-cdn.com/cdn-cgi/image/f=auto,width=352,height=176,quality=78/cr-mv/space-s-v2.png 2x" 
-           height="88" width="176" decoding="async" />
+    <button class="worldSwitcher__button" data-world="space">
+      <img alt="Space" src="https://a.poki-cdn.com/cdn-cgi/image/f=auto,width=176,height=88,quality=78/cr-mv/space-s-v2.png" />
     </button>
-    <button class="worldSwitcher__button" data-world="dinosaur" type="button">
-      <img alt="Dinosaur" src="https://a.poki-cdn.com/cdn-cgi/image/f=auto,width=176,height=88,quality=78/cr-mv/dinosaur-blue-s-v2.png" 
-           srcset="https://a.poki-cdn.com/cdn-cgi/image/f=auto,width=176,height=88,quality=78/cr-mv/dinosaur-blue-s-v2.png 1x, https://a.poki-cdn.com/cdn-cgi/image/f=auto,width=352,height=176,quality=78/cr-mv/dinosaur-blue-s-v2.png 2x" 
-           height="88" width="176" decoding="async" />
+    <button class="worldSwitcher__button" data-world="dinosaur">
+      <img alt="Dinosaur" src="https://a.poki-cdn.com/cdn-cgi/image/f=auto,width=176,height=88,quality=78/cr-mv/dinosaur-blue-s-v2.png" />
     </button>
   </div>
 
-  <!-- Scripts JS -->
+  <!-- Scripts JS, en orden para que el juego funcione -->
   <script src="scripts/asset-loader.min.js"></script>
   <script src="scripts/three.min.js"></script>
   <script src="scripts/game.min.js"></script>
