@@ -3,14 +3,15 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-    <title>Crossy Road Multiverse</title>
+    <title>Crossy Road</title>
 
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="app-store-interstitial.css" />
 
     <script src="https://game-cdn.poki.com/scripts/v2/poki-sdk.js"></script>
 
-    <script src="beautified%20(1).js"></script> <script src="extra.min.js"></script>
+    <script src="three.min.js"></script>
+    <script src="extra.min.js"></script>
     <script src="asset-loader.min.js"></script>
 </head>
 <body>
@@ -29,7 +30,9 @@
     </div>
 
     <script src="bootstrap.min.js"></script>
-    <script src="beautified.js"></script> <script>
+    <script src="game.min.js"></script>
+
+    <script>
         window.onload = function () {
             function switchWorld(type, content){
                 window.postMessage({ type, content: { worldName:content }}, '*');
