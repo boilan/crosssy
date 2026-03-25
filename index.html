@@ -1,57 +1,79 @@
-<!doctype HTML>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
-  <title>Crossy Road</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crossy Test</title>
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="sprites/style.css" />
-  <link rel="stylesheet" href="sprites/app-store-interstitial.css" />
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: black;
+    }
+    #container {
+      width: 100vw;
+      height: 100vh;
+    }
+  </style>
 
-  <!-- SDK externo -->
-  <script src="//game-cdn.poki.com/scripts/v2/poki-sdk.js"></script>
+  <!-- Mock de Poki -->
+  <script>
+    window.PokiSDK = {
+      init: () => {
+        console.log("Poki mock init");
+        return Promise.resolve();
+      },
+      gameLoadingStart: () => console.log("loading start"),
+      gameLoadingFinished: () => console.log("loading finished"),
+      gameplayStart: () => console.log("gameplay start"),
+      gameplayStop: () => console.log("gameplay stop")
+    };
+  </script>
 </head>
+
 <body>
-  <!-- Contenedor del juego -->
   <div id="container"></div>
 
-  <!-- Botones de modos desplegables -->
-  <div class="worldSwitcher">
-    <button class="worldSwitcher__button" data-world="original">
-      <img alt="Original" src="https://a.poki-cdn.com/cdn-cgi/image/f=auto,width=176,height=88,quality=78/cr-mv/original-s-v2.png" />
-    </button>
-    <button class="worldSwitcher__button" data-world="space">
-      <img alt="Space" src="https://a.poki-cdn.com/cdn-cgi/image/f=auto,width=176,height=88,quality=78/cr-mv/space-s-v2.png" />
-    </button>
-    <button class="worldSwitcher__button" data-world="dinosaur">
-      <img alt="Dinosaur" src="https://a.poki-cdn.com/cdn-cgi/image/f=auto,width=176,height=88,quality=78/cr-mv/dinosaur-blue-s-v2.png" />
-    </button>
-  </div>
-
-  <!-- Scripts JS en orden correcto -->
-  <script src="scripts/asset-loader.min.js"></script>
+  <!-- Scripts -->
   <script src="scripts/three.min.js"></script>
+  <script src="scripts/asset-loader.min.js"></script>
   <script src="scripts/game.min.js"></script>
   <script src="scripts/extra.min.js"></script>
   <script src="scripts/bootstrap.min.js"></script>
 
+  <!-- Forzar ejecución -->
   <script>
-    // Inicializa los botones de cambio de mundo
-    window.onload = function () {
-      function switchWorld(type, content){
-        window.postMessage({ type, content: { worldName:content }}, '*');
-      }
+    window.addEventListener("load", () => {
+      console.log("Page loaded");
 
-      document.querySelectorAll('.worldSwitcher__button').forEach(function(button) {
-        button.addEventListener('click', function() {
-          var world = button.getAttribute('data-world');
-          if (world) {
-            switchWorld('CrossyMultiverseMessage_switchWorldTo', world);
-          }
-        });
-      });
-    };
+      setTimeout(() => {
+        console.log("Buscando funciones...");
+
+        for (let key in window) {
+          try {
+            if (typeof window[key] === "function") {
+              if (
+                key.toLowerCase().includes("start") ||
+                key.toLowerCase().includes("init")
+              ) {
+                console.log("Intentando ejecutar:", key);
+                try {
+                  window[key]();
+                } catch (e) {}
+              }
+            }
+          } catch (e) {}
+        }
+
+        const canvas = document.querySelector("canvas");
+        if (canvas) {
+          console.log("✅ Juego iniciado");
+        } else {
+          console.warn("❌ No inició el juego");
+        }
+      }, 2000);
+    });
   </script>
 </body>
 </html>
