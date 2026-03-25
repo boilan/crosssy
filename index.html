@@ -3,7 +3,6 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-
     <title>Crossy Road | Render</title>
 
     <link rel="stylesheet" href="style.css" />
@@ -11,7 +10,8 @@
 
     <script src="https://game-cdn.poki.com/scripts/v2/poki-sdk.js"></script>
 
-    <script src="beautified (1).js"></script> <script src="extra.min.js"></script>
+    <script src="beautified%20(1).js"></script> 
+    <script src="extra.min.js"></script>
     <script src="asset-loader.min.js"></script>
 </head>
 <body>
@@ -30,18 +30,17 @@
     </div>
 
     <script src="bootstrap.min.js"></script>
-    <script src="beautified.js"></script> <script>
+    <script src="beautified.js"></script>
+
+    <script>
         window.onload = function () {
             function switchWorld(type, content){
                 window.postMessage({ type, content: { worldName:content }}, '*');
             }
-
             document.querySelectorAll('.worldSwitcher__button').forEach(function(button) {
                 button.addEventListener('click', function() {
                     var world = button.getAttribute('data-world');
-                    if (world) {
-                        switchWorld('CrossyMultiverseMessage_switchWorldTo', world);
-                    }
+                    if (world) switchWorld('CrossyMultiverseMessage_switchWorldTo', world);
                 });
             });
         };
